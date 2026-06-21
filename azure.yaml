@@ -1,0 +1,22 @@
+name: app
+metadata:
+  template: nextjs-appservice-azd
+infra:
+  provider: bicep
+
+services:
+  web:
+    project: ./web
+    language: js
+    host: appservice
+    docker:
+      path: ./web/Dockerfile
+
+hooks:
+  postprovision:
+    windows:
+      shell: pwsh
+      run: ./scripts/build-and-push-docker.ps1
+    posix:
+      shell: sh
+      run: ./scripts/build-and-push-docker.sh

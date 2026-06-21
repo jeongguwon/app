@@ -19,4 +19,4 @@ hooks:
       run: ./scripts/build-and-push-docker.ps1
     posix:
       shell: sh
-      run: ./scripts/build-and-push-docker.sh
+      run: sh ./scripts/build-and-push-docker.sh
